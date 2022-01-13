@@ -9,7 +9,7 @@ const Header: React.FC = () => {
         top: 0,
         zIndex: 100,
         paddingBottom: "16px",
-        backgroundColor: "#f5f6fb",
+        bgcolor: "background.default",
       }}
     >
       <Box

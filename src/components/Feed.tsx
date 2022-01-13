@@ -1,6 +1,8 @@
 import { Box, Paper, TextField, Typography } from "@mui/material";
+import FeedBody from "./FeedBody";
+import FeedHeader from "./FeedHeader";
 
-const Feed: React.FC = () => {
+const Feed: React.FC = ({children}) => {
   return (
     <Box
       sx={{
@@ -15,42 +17,21 @@ const Feed: React.FC = () => {
           width: "600px",
         }}
       >
-        <Box
-          sx={{
-            position: "sticky",
-            top: "72px",
-            paddingBottom: "16px",
-            backgroundColor: "#f5f6fb",
-          }}
-        >
-          <Box
+        {children}
+        {/* <FeedHeader>
+          <Typography
+            variant="h6"
             sx={{
-              padding: "16px",
-              width: "100%",
-              backgroundColor: "#fff",
-              borderRadius: "16px 16px 0 0"
+              fontWeight: "600",
             }}
+            color="primary.main"
           >
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: "600",
-              }}
-              color="primary.main"
-            >
-              Home
-            </Typography>
-            <Typography>Add note for the day</Typography>
-            <TextField fullWidth />
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            padding: "16px",
-            width: "inherit",
-          }}
-        >
+            Home
+          </Typography>
+          <Typography>Add note for the day</Typography>
+          <TextField fullWidth />
+        </FeedHeader>
+        <FeedBody>
           <Paper
             sx={{
               height: "200px",
@@ -81,7 +62,7 @@ const Feed: React.FC = () => {
               marginBottom: "16px",
             }}
           ></Paper>
-        </Box>
+        </FeedBody> */}
       </Box>
     </Box>
   );

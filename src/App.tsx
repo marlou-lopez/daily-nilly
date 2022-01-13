@@ -1,8 +1,8 @@
-import { Container, Grid, TextField } from "@mui/material";
-import { Box } from "@mui/system";
-import React, { useState } from "react";
+import { Grid } from "@mui/material";
 import "./App.css";
 import Feed from "./components/Feed";
+import FeedBody from "./components/FeedBody";
+import FeedHeader from "./components/FeedHeader";
 import Header from "./components/Header";
 import LeftSidebar from "./components/LeftSidebar";
 import RightSidebar from "./components/RightSidebar";
@@ -11,7 +11,7 @@ function App() {
   return (
     <Grid
       sx={{
-        backgroundColor: "#f5f6fb",
+        bgcolor: "background.default",
         display: "flex",
         width: "100%",
         minHeight: "100%",
@@ -21,7 +21,10 @@ function App() {
       {/* Left sidenav */}
       <LeftSidebar />
       {/* Main */}
-      <Feed />
+      <Feed>
+        <FeedHeader>test</FeedHeader>
+        <FeedBody>test</FeedBody>
+      </Feed>
       {/* Right sidenav */}
       <RightSidebar />
     </Grid>
