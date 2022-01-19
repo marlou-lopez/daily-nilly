@@ -1,6 +1,10 @@
-import { Box } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 
-const FeedHeader: React.FC = ({ children }) => {
+interface IFeedHeader {
+  headerTitle?: string;
+}
+
+const FeedHeader: React.FC<IFeedHeader> = ({ children, headerTitle }) => {
   return (
     <Box
       sx={{
@@ -16,9 +20,23 @@ const FeedHeader: React.FC = ({ children }) => {
           width: "100%",
           bgcolor: "background.paper",
           borderTopLeftRadius: "16px",
-          borderTopRightRadius: "16px"
+          borderTopRightRadius: "16px",
+          color: "text.primary",
         }}
       >
+        {headerTitle && (
+          <>
+            <Typography
+              variant="h5"
+              sx={{
+                color: "primary.main",
+              }}
+            >
+              {headerTitle}
+            </Typography>
+            <Divider />
+          </>
+        )}
         {children}
       </Box>
     </Box>

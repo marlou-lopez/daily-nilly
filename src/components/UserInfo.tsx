@@ -7,11 +7,12 @@ const UserInfo: React.FC = () => {
         borderTopLeftRadius: "16px",
         borderTopRightRadius: "16px",
         padding: "8px 0",
+        color: "text.primary"
       }}
     >
       <Box
         sx={{
-          backgroundColor: "#fff",
+          bgcolor: "background.paper",
           height: "100px",
           display: "flex",
           justifyContent: "center",
@@ -34,7 +35,7 @@ const UserInfo: React.FC = () => {
       />
       <Box
         sx={{
-          backgroundColor: "#fff",
+          bgcolor: "background.paper",
         }}
       >
         <Box sx={{

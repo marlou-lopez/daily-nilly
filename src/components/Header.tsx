@@ -1,6 +1,12 @@
-import { Box } from "@mui/material";
+import { useContext } from "react";
+import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/NightsStay";
+import { ColorModeContext, useColorMode } from "../contexts/color-mode-context";
 
 const Header: React.FC = () => {
+  const theme = useTheme();
+  const { toggleColorMode } = useColorMode();
   return (
     <Box
       sx={{
@@ -14,8 +20,7 @@ const Header: React.FC = () => {
     >
       <Box
         sx={{
-          // backgroundColor: "cornsilk", 
-          bgcolor: "primary.main"
+          bgcolor: "primary.main",
         }}
       >
         <Box
@@ -24,10 +29,21 @@ const Header: React.FC = () => {
             margin: "0 auto",
             display: "flex",
             alignItems: "center",
+            justifyContent: "space-between",
             width: "1200px",
+            color: "common.white",
           }}
         >
-          Dayless
+          <Typography variant="h5">Dayless</Typography>
+          {theme.palette.mode === "light" ? (
+            <IconButton color="inherit" onClick={toggleColorMode}>
+              <LightModeIcon />
+            </IconButton>
+          ) : (
+            <IconButton color="inherit" onClick={toggleColorMode}>
+              <DarkModeIcon />
+            </IconButton>
+          )}
         </Box>
       </Box>
     </Box>

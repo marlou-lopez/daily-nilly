@@ -7,6 +7,7 @@ const FeedBody: React.FC = ({children}) => {
         bgcolor: "background.paper",
         padding: 2,
         width: "inherit",
+        color: "text.primary"
       }}
     >
       {children}

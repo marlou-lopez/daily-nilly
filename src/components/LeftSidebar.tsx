@@ -1,5 +1,26 @@
-import { Box, Link } from "@mui/material";
+import { Box, styled } from "@mui/material";
+import { NavLink } from "react-router-dom";
 import Sidebar from "./Sidebar";
+
+const SidebarLink = styled(NavLink)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  height: "48px",
+  margin: `0 ${theme.spacing(-1.5)}`,
+  padding: `0 ${theme.spacing(1.5)}`,
+  color: theme.palette.primary.main,
+  cursor: "pointer",
+  borderRadius: "16px",
+  textDecoration: "none",
+  "&:hover": {
+    backgroundColor: "rgba(25, 52, 94, 0.2)",
+  },
+}));
+
+const activeLinkStyle: React.CSSProperties = {
+  backgroundColor: "#19345E",
+  color: "#fff",
+};
 
 const LeftSidebar: React.FC = () => {
   return (
@@ -9,69 +30,36 @@ const LeftSidebar: React.FC = () => {
           py: 0.5,
         }}
       >
-        <Link
-          underline="none"
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            height: "48px",
-            mx: -1.5,
-            px: 1.5,
-            cursor: "pointer",
-            borderRadius: "16px",
-            ":hover": {
-              bgcolor: "#eff2ff",
-            },
-          }}
+        <SidebarLink
+          to="/"
+          style={({ isActive }) => (isActive ? activeLinkStyle : {})}
         >
           Home
-        </Link>
+        </SidebarLink>
       </Box>
       <Box
         sx={{
           py: 0.5,
         }}
       >
-        <Link
-          underline="none"
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            height: "48px",
-            mx: -1.5,
-            px: 1.5,
-            cursor: "pointer",
-            borderRadius: "16px",
-            ":hover": {
-              bgcolor: "#eff2ff",
-            },
-          }}
+        <SidebarLink
+          to="/quests"
+          style={({ isActive }) => (isActive ? activeLinkStyle : {})}
         >
           Quests
-        </Link>
+        </SidebarLink>
       </Box>
       <Box
         sx={{
           py: 0.5,
         }}
       >
-        <Link
-          underline="none"
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            height: "48px",
-            mx: -1.5,
-            px: 1.5,
-            cursor: "pointer",
-            borderRadius: "16px",
-            ":hover": {
-              bgcolor: "#eff2ff",
-            },
-          }}
+        <SidebarLink
+          to="/profile"
+          style={({ isActive }) => (isActive ? activeLinkStyle : {})}
         >
           Profile
-        </Link>
+        </SidebarLink>
       </Box>
     </Sidebar>
   );
