@@ -1,30 +1,53 @@
 import React from "react";
 
-interface Notes {
+export interface INotes {
+  id: string;
   content: string;
+  date: Date;
 }
 
 type Action =
-  | { type: "add"; payload: Notes }
-  | { type: "update" }
-  | { type: "delete" };
+  | { type: "add"; payload: INotes }
+  | { type: "edit"; payload: Pick<INotes, "id" | "content"> }
+  | { type: "delete"; payload: Pick<INotes, "id"> };
 type Dispatch = (action: Action) => void;
-type State = { notes: Notes[] };
+type State = { notes: INotes[] };
 type NotesProviderProps = { children: React.ReactNode };
 
 const NotesContext = React.createContext<
   { state: State; dispatch: Dispatch } | undefined
 >(undefined);
 
-const notesReducer = (state: State, action: Action) => {
+const notesReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "add": {
       return {
-        notes: [...state.notes, action.payload],
+        ...state,
+        notes: [action.payload, ...state.notes],
+      };
+    }
+    case "edit": {
+      return {
+        ...state,
+        notes: state.notes.map((note) => {
+          if (note.id === action.payload.id) {
+            return {
+              ...note,
+              content: action.payload.content,
+            };
+          }
+          return note;
+        }),
+      };
+    }
+    case "delete": {
+      return {
+        ...state,
+        notes: state.notes.filter((note) => note.id !== action.payload.id),
       };
     }
     default: {
-      throw new Error(`Unhandled action type: ${action.type}`);
+      throw new Error("Unhandled action type");
     }
   }
 };

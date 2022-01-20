@@ -1,4 +1,4 @@
-import { Box, Divider, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 interface IFeedHeader {
   headerTitle?: string;
@@ -12,6 +12,7 @@ const FeedHeader: React.FC<IFeedHeader> = ({ children, headerTitle }) => {
         top: "72px",
         paddingBottom: 2,
         bgcolor: "background.default",
+        zIndex: 100
       }}
     >
       <Box
@@ -34,7 +35,6 @@ const FeedHeader: React.FC<IFeedHeader> = ({ children, headerTitle }) => {
             >
               {headerTitle}
             </Typography>
-            <Divider />
           </>
         )}
         {children}

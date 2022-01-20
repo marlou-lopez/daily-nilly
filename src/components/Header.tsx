@@ -1,8 +1,7 @@
-import { useContext } from "react";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/NightsStay";
-import { ColorModeContext, useColorMode } from "../contexts/color-mode-context";
+import { useColorMode } from "../contexts/color-mode-context";
 
 const Header: React.FC = () => {
   const theme = useTheme();
@@ -36,11 +35,11 @@ const Header: React.FC = () => {
         >
           <Typography variant="h5">Dayless</Typography>
           {theme.palette.mode === "light" ? (
-            <IconButton color="inherit" onClick={toggleColorMode}>
+            <IconButton color="inherit" onClick={toggleColorMode} data-testid="light-mode-btn">
               <LightModeIcon />
             </IconButton>
           ) : (
-            <IconButton color="inherit" onClick={toggleColorMode}>
+            <IconButton color="inherit" onClick={toggleColorMode} data-testid="dark-mode-btn">
               <DarkModeIcon />
             </IconButton>
           )}

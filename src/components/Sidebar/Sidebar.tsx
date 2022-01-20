@@ -11,7 +11,6 @@ const Sidebar: React.FC<ISidebar> = ({ position, children }) => {
         display: "flex",
         flexGrow: 1,
         justifyContent: position === "left" ? "flex-end" : "flex-start",
-        // margin left, margin-right
         mx: 2,
       }}
     >

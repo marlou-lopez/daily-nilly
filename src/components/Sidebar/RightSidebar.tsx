@@ -1,5 +1,5 @@
 import Sidebar from "./Sidebar";
-import UserInfo from "./UserInfo";
+import UserInfo from "../UserInfo";
 
 const RightSidebar: React.FC = () => {
   return (

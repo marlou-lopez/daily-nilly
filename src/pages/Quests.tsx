@@ -1,5 +1,5 @@
-import FeedBody from "../components/FeedBody";
-import FeedHeader from "../components/FeedHeader";
+import FeedBody from "../components/Feed/FeedBody";
+import FeedHeader from "../components/Feed/FeedHeader";
 
 const Quests: React.FC = () => {
   return (
