@@ -14,7 +14,7 @@ type Dispatch = (action: Action) => void;
 type State = { notes: INotes[] };
 type NotesProviderProps = { children: React.ReactNode };
 
-const NotesContext = React.createContext<
+export const NotesContext = React.createContext<
   { state: State; dispatch: Dispatch } | undefined
 >(undefined);
 

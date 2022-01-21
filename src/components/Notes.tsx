@@ -17,8 +17,8 @@ const NoteForm: React.FC<Pick<INotes, "id" | "content">> = ({
         payload: {
           id: selectedId,
           content,
-        }
-      })
+        },
+      });
     } else {
       dispatch({
         type: "add",
@@ -35,7 +35,6 @@ const NoteForm: React.FC<Pick<INotes, "id" | "content">> = ({
 
   useEffect(() => {
     if (selectedContent) {
-      console.log("sel: ", selectedContent)
       setContent(selectedContent);
     }
   }, [selectedContent]);
@@ -47,7 +46,15 @@ const NoteForm: React.FC<Pick<INotes, "id" | "content">> = ({
     <>
       <form onSubmit={handleSubmit}>
         <Typography variant="subtitle1">Add notes for the day</Typography>
-        <TextField value={content} onChange={handleChange} fullWidth />
+        <TextField
+          value={content}
+          onChange={handleChange}
+          fullWidth
+          data-testid="notes-textfield"
+          inputProps={{
+            "data-testid": "notes-textfield-input"
+          }}
+        />
       </form>
     </>
   );

@@ -1,10 +1,10 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import App from "./App";
-import { ColorModeProvider } from "./contexts/color-mode-context";
+import App from "../../App";
+import { ColorModeProvider } from "../../contexts/color-mode-context";
 import { BrowserRouter } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { getDesignTokens } from "./utils/theme-utils";
+import { getDesignTokens } from "../../utils/theme-utils";
 
 const customRender = (
   ui: React.ReactNode,
@@ -43,3 +43,22 @@ test("Theme switching", async () => {
 
   expect(screen.queryByTestId("dark-mode-btn")).not.toBeInTheDocument();
 });
+
+
+test("app navigation", () => {
+  customRender(<App />, {});
+
+  expect(screen.getByTestId("feed-header-title")).toHaveTextContent("Home");
+  
+  const questsLink = screen.getByTestId("sidebar-quests-link");
+
+  fireEvent.click(questsLink);
+
+  expect(screen.getByTestId("feed-header-title")).toHaveTextContent("Quests");
+
+  const profileLink = screen.getByTestId("sidebar-profile-link");
+  fireEvent.click(profileLink);
+
+  expect(screen.getByTestId("feed-header-title")).toHaveTextContent("Profile");
+
+})

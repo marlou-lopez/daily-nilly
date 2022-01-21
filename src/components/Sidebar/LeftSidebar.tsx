@@ -33,6 +33,7 @@ const LeftSidebar: React.FC = () => {
         <SidebarLink
           to="/"
           style={({ isActive }) => (isActive ? activeLinkStyle : {})}
+          data-testid="sidebar-home-link"
         >
           Home
         </SidebarLink>
@@ -45,6 +46,7 @@ const LeftSidebar: React.FC = () => {
         <SidebarLink
           to="/quests"
           style={({ isActive }) => (isActive ? activeLinkStyle : {})}
+          data-testid="sidebar-quests-link"
         >
           Quests
         </SidebarLink>
@@ -57,6 +59,7 @@ const LeftSidebar: React.FC = () => {
         <SidebarLink
           to="/profile"
           style={({ isActive }) => (isActive ? activeLinkStyle : {})}
+          data-testid="sidebar-profile-link"
         >
           Profile
         </SidebarLink>

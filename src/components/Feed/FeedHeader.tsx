@@ -32,6 +32,7 @@ const FeedHeader: React.FC<IFeedHeader> = ({ children, headerTitle }) => {
               sx={{
                 color: "primary.main",
               }}
+              data-testid="feed-header-title"
             >
               {headerTitle}
             </Typography>

@@ -29,12 +29,12 @@ const CardMenu: React.FC<ICardMenu> = ({ handleDelete, handleEdit, id }) => {
   }
   return (
     <>
-      <IconButton aria-label="settings" onClick={handleClick}>
+      <IconButton aria-label="settings" onClick={handleClick} data-testid={`menu-icon-${id}`}>
         <MoreVertIcon />
       </IconButton>
-      <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        <MenuItem onClick={handleEditMenu}>Edit</MenuItem>
-        <MenuItem onClick={handleDeleteMenu}>Delete</MenuItem>
+      <Menu anchorEl={anchorEl} open={open} onClose={handleClose} data-testid={`menu-${id}`}>
+        <MenuItem onClick={handleEditMenu} data-testid={`edit-menu-${id}`} >Edit</MenuItem>
+        <MenuItem onClick={handleDeleteMenu} data-testid={`delete-menu-${id}`}>Delete</MenuItem>
       </Menu>
     </>
   );

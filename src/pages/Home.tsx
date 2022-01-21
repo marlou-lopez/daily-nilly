@@ -34,7 +34,7 @@ const Home: React.FC = () => {
 
   const handleEdit = (id: INotes["id"]) => {
     const note = notes.find(note => note.id === id);
-    if (note) {
+    if (note) {      
       setSelectedNote({id: note.id, content: note.content});
     }
   };
@@ -54,6 +54,7 @@ const Home: React.FC = () => {
                 bgcolor: "background.paper",
               }}
               key={note.id}
+              data-testid={`note-${note.id}`}
             >
               <CardHeader
                 subheader={relativeTimeFromDates(note.date)}
@@ -65,11 +66,11 @@ const Home: React.FC = () => {
                   />
                 }
               />
-              <CardContent>{note.content}</CardContent>
+              <CardContent data-testid={`note-${note.id}-content`}>{note.content}</CardContent>
             </Card>
           ))
         ) : (
-          <Typography variant="overline">Want to note something?</Typography>
+          <Typography variant="overline" data-testid="feed-placeholder">Want to note something?</Typography>
         )}
       </FeedBody>
     </>
