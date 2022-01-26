@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { NotesContext } from "../../contexts/notes-context";
-import Home from "../../pages/Home";
+import { NotesContext } from "../../../contexts/notes-context";
+import Home from "../../../pages/Home";
 
 describe("Home unit test", () => {
 

@@ -12,6 +12,7 @@ import Quests from "./pages/Quests";
 import { useColorMode } from "./contexts/color-mode-context";
 import { getDesignTokens } from "./utils/theme-utils";
 import { NotesProvider } from "./contexts/notes-context";
+import { QuestsProvider } from "./contexts/quests-context";
 
 function App() {
   const { mode } = useColorMode();
@@ -40,7 +41,14 @@ function App() {
                 </NotesProvider>
               }
             />
-            <Route path="/quests" element={<Quests />} />
+            <Route
+              path="/quests"
+              element={
+                <QuestsProvider>
+                  <Quests />
+                </QuestsProvider>
+              }
+            />
             <Route path="/profile" element={<Profile />} />
           </Routes>
         </Feed>

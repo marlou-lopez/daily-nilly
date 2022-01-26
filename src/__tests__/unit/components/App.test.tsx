@@ -1,10 +1,10 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import App from "../../App";
-import { ColorModeProvider } from "../../contexts/color-mode-context";
+import App from "../../../App";
+import { ColorModeProvider } from "../../../contexts/color-mode-context";
 import { BrowserRouter } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { getDesignTokens } from "../../utils/theme-utils";
+import { getDesignTokens } from "../../../utils/theme-utils";
 
 const customRender = (
   ui: React.ReactNode,

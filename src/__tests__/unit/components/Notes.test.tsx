@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import NoteForm from "../../components/Notes";
-import { NotesContext, NotesProvider } from "../../contexts/notes-context";
+import NoteForm from "../../../components/Notes";
+import { NotesContext, NotesProvider } from "../../../contexts/notes-context";
 jest.mock("uuid", () => ({ v4: () => "123" }));
 
 describe("Notes unit test", () => {
