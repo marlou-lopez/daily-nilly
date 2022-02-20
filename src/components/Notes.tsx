@@ -1,5 +1,5 @@
 import { TextField, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { INotes, useNotes } from "../contexts/notes-context";
 import { v4 as uuid } from "uuid";
 
@@ -8,6 +8,7 @@ const NoteForm: React.FC<Pick<INotes, "id" | "content">> = ({
   content: selectedContent,
 }) => {
   const [content, setContent] = useState<string>("");
+  const inputRef = useRef<HTMLInputElement>(null)
   const { dispatch } = useNotes();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,6 +37,7 @@ const NoteForm: React.FC<Pick<INotes, "id" | "content">> = ({
   useEffect(() => {
     if (selectedContent) {
       setContent(selectedContent);
+      inputRef?.current?.focus();
     }
   }, [selectedContent]);
 
@@ -52,8 +54,9 @@ const NoteForm: React.FC<Pick<INotes, "id" | "content">> = ({
           fullWidth
           data-testid="notes-textfield"
           inputProps={{
-            "data-testid": "notes-textfield-input"
+            "data-testid": "notes-textfield-input",
           }}
+          inputRef={inputRef}
         />
       </form>
     </>
