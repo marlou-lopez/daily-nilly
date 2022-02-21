@@ -1,6 +1,6 @@
 import { TextField, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
-import { INotes, useNotes } from "../contexts/notes-context";
+import { INotes, useNotesContext } from "../../contexts/notes-context";
 import { v4 as uuid } from "uuid";
 
 const NoteForm: React.FC<Pick<INotes, "id" | "content">> = ({
@@ -9,7 +9,7 @@ const NoteForm: React.FC<Pick<INotes, "id" | "content">> = ({
 }) => {
   const [content, setContent] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null)
-  const { dispatch } = useNotes();
+  const { dispatch } = useNotesContext();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (selectedContent) {
@@ -27,6 +27,7 @@ const NoteForm: React.FC<Pick<INotes, "id" | "content">> = ({
           id: uuid(),
           content,
           date: new Date(),
+          body: content
         },
       });
     }
