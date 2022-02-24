@@ -5,18 +5,22 @@ import { ColorModeProvider } from "../../../contexts/color-mode-context";
 import { BrowserRouter } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { getDesignTokens } from "../../../utils/theme-utils";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const customRender = (
   ui: React.ReactNode,
   { providerProps, ...renderOptions }: any
 ) => {
+  const queryClient = new QueryClient();
   const theme = createTheme(getDesignTokens("light"));
   return render(
-    <BrowserRouter>
-      <ColorModeProvider {...providerProps}>
-        <ThemeProvider theme={theme}>{ui}</ThemeProvider>
-      </ColorModeProvider>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <ColorModeProvider {...providerProps}>
+          <ThemeProvider theme={theme}>{ui}</ThemeProvider>
+        </ColorModeProvider>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 };
 
@@ -49,7 +53,7 @@ test("app navigation", () => {
   customRender(<App />, {});
 
   expect(screen.getByTestId("feed-header-title")).toHaveTextContent("Home");
-  
+
   const questsLink = screen.getByTestId("sidebar-quests-link");
 
   fireEvent.click(questsLink);

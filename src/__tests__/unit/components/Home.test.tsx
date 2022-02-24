@@ -1,134 +1,73 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { setupServer } from "msw/node"
 import { NotesContext } from "../../../contexts/notes-context";
 import Home from "../../../pages/Home";
+import { rest } from "msw";
 
 describe("Home unit test", () => {
 
-  
-  test("Display placeholder for feed", () => {
-    const mockDispatch = jest.fn();
+  const JSONPlaceholderURL = (path: string) => {
+    return new URL(path, "https://jsonplaceholder.typicode.com").toString();
+  }
 
-    const value = {
-      state: {
-        notes: [],
-      },
-      dispatch: mockDispatch,
-    };
+  const server = setupServer(
+    rest.get(JSONPlaceholderURL('/posts'), (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json([
+        {
+          id: 1,
+          title: "SampleTitle01",
+          body: "SampleBody01"
+        },
+        {
+          id: 2,
+          title: "SampleTitle01",
+          body: "SampleBody01"
+        },
+        {
+          id: 3,
+          title: "SampleTitle01",
+          body: "SampleBody01"
+        },
+        {
+          id: 4,
+          title: "SampleTitle01",
+          body: "SampleBody01"
+        },
+        {
+          id: 5,
+          title: "SampleTitle01",
+          body: "SampleBody01"
+        }
+      ]))
+    })
+  )
+
+  let queryClient = new QueryClient();
+  // establish API mocking before all tests
+  beforeAll(() => server.listen())
+  // reset any request handlers that are declared as a part of our tests
+  // (i.e. for testing one-time error scenarios)
+  afterEach(() => server.resetHandlers())
+  // clean up once the tests are done
+  afterAll(() => server.close())
+
+  // test("Display placeholder for feed");
+
+  test("Display notes", async () => {
     render(
-      <NotesContext.Provider value={value}>
+      <QueryClientProvider client={queryClient}>
         <Home />
-      </NotesContext.Provider>
+      </QueryClientProvider>
     );
+    await waitFor(() => {
+      const noteOne = screen.getByTestId("note-1");
+      expect(noteOne).toHaveTextContent("SampleBody01");
+    })
 
-    const feedPlaceholder = screen.getByTestId("feed-placeholder");
-    expect(feedPlaceholder).toBeInTheDocument();
-    expect(feedPlaceholder).toHaveTextContent("Want to note something?");
   });
 
-  test("Display notes", () => {
-    const mockDispatch = jest.fn();
+  // test("Note handleDelete handler");
 
-    const value = {
-      state: {
-        notes: [
-          {
-            id: "1",
-            content: "test-content",
-            date: new Date(),
-          },
-          {
-            id: "2",
-            content: "test-content two",
-            date: new Date(),
-          },
-        ],
-      },
-      dispatch: mockDispatch,
-    };
-    render(
-      <NotesContext.Provider value={value}>
-        <Home />
-      </NotesContext.Provider>
-    );
-
-    const noteOne = screen.getByTestId("note-1");
-    expect(noteOne).toBeInTheDocument();
-    expect(noteOne).toHaveTextContent("test-content");
-  });
-
-  test("Note handleDelete handler", () => {
-    const mockDispatch = jest.fn();
-
-    const value = {
-      state: {
-        notes: [
-          {
-            id: "1",
-            content: "test-content",
-            date: new Date(),
-          },
-          {
-            id: "2",
-            content: "test-content two",
-            date: new Date(),
-          },
-        ],
-      },
-      dispatch: mockDispatch,
-    };
-    render(
-      <NotesContext.Provider value={value}>
-        <Home />
-      </NotesContext.Provider>
-    );
-    
-    const menuBtn = screen.getByTestId("menu-icon-1");
-    expect(menuBtn).toBeInTheDocument();
-
-    fireEvent.click(menuBtn);
-    fireEvent.click(screen.getByTestId("delete-menu-1"));
-
-    expect(mockDispatch).toHaveBeenCalled();
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: "delete",
-      payload: {
-        id: "1"
-      }
-    });
-  });
-
-  test("Note handleEdit handler", () => {
-    const mockDispatch = jest.fn();
-
-    const value = {
-      state: {
-        notes: [
-          {
-            id: "1",
-            content: "test-content",
-            date: new Date(),
-          },
-          {
-            id: "2",
-            content: "test-content two",
-            date: new Date(),
-          },
-        ],
-      },
-      dispatch: mockDispatch,
-    };
-    render(
-      <NotesContext.Provider value={value}>
-        <Home />
-      </NotesContext.Provider>
-    );
-    
-    const menuBtn = screen.getByTestId("menu-icon-1");
-    expect(menuBtn).toBeInTheDocument();
-
-    fireEvent.click(menuBtn);
-    fireEvent.click(screen.getByTestId("edit-menu-1"));
-    
-    expect((screen.getByTestId("notes-textfield-input") as HTMLInputElement).value).toBe("test-content");
-  });
+  // test("Note handleEdit handler");
 });

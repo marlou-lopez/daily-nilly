@@ -9,28 +9,28 @@ const NoteForm: React.FC<Pick<INotes, "id" | "content">> = ({
 }) => {
   const [content, setContent] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null)
-  const { dispatch } = useNotesContext();
+  // const { dispatch } = useNotesContext();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (selectedContent) {
-      dispatch({
-        type: "edit",
-        payload: {
-          id: selectedId,
-          content,
-        },
-      });
-    } else {
-      dispatch({
-        type: "add",
-        payload: {
-          id: uuid(),
-          content,
-          date: new Date(),
-          body: content
-        },
-      });
-    }
+    // if (selectedContent) {
+    //   dispatch({
+    //     type: "edit",
+    //     payload: {
+    //       id: selectedId,
+    //       content,
+    //     },
+    //   });
+    // } else {
+    //   dispatch({
+    //     type: "add",
+    //     payload: {
+    //       id: uuid(),
+    //       content,
+    //       date: new Date(),
+    //       body: content
+    //     },
+    //   });
+    // }
 
     setContent("");
   };

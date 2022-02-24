@@ -5,6 +5,7 @@ export interface INotes {
   content: string;
   date: Date;
   body: string;
+  title: string;
 }
 
 type Action =
