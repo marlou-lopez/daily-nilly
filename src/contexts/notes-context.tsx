@@ -4,6 +4,8 @@ export interface INotes {
   id: string;
   content: string;
   date: Date;
+  body: string;
+  title: string;
 }
 
 type Action =
@@ -62,7 +64,7 @@ const NotesProvider = ({ children }: NotesProviderProps) => {
   );
 };
 
-const useNotes = () => {
+const useNotesContext = () => {
   const context = React.useContext(NotesContext);
   if (context === undefined) {
     throw new Error("useNotes must be used within a NotesProvider");
@@ -70,4 +72,4 @@ const useNotes = () => {
   return context;
 };
 
-export { NotesProvider, useNotes };
+export { NotesProvider, useNotesContext };
