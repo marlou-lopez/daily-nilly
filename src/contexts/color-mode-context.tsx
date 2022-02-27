@@ -1,21 +1,27 @@
+import { PaletteMode } from "@mui/material";
 import React, { useMemo, useState } from "react"
 
 type ColorModeProviderProps = { children: React.ReactNode };
 
 export const ColorModeContext = React.createContext<{
-  mode: "light" | "dark",
+  mode: PaletteMode,
   toggleColorMode: () => void
 } | undefined>(undefined);
 
-const ColorModeProvider = ({children}: ColorModeProviderProps) => {
-  const [mode, setMode] = useState<"light" | "dark">("light");
+const ColorModeProvider = ({ children }: ColorModeProviderProps) => {
+  const appTheme = localStorage.getItem("app.theme") as PaletteMode;
+  const [mode, setMode] = useState<PaletteMode>(appTheme || "light");
   const colorMode = useMemo(() => ({
     toggleColorMode: () => {
-      setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+      setMode((prevMode) => {
+        const toggledMode = (prevMode === "light" ? "dark" : "light");
+        localStorage.setItem("app.theme", toggledMode)
+        return toggledMode;
+      })
     }
   }), []);
 
-  const value = {mode, toggleColorMode: colorMode.toggleColorMode }
+  const value = { mode, toggleColorMode: colorMode.toggleColorMode }
 
   return (
     <ColorModeContext.Provider value={value}>
@@ -33,4 +39,4 @@ const useColorMode = () => {
   return context;
 }
 
-export {ColorModeProvider, useColorMode}
+export { ColorModeProvider, useColorMode }
