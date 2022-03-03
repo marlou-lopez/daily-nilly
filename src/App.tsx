@@ -13,6 +13,7 @@ import { useColorMode } from "./contexts/color-mode-context";
 import { getDesignTokens } from "./utils/theme-utils";
 import { NotesProvider } from "./contexts/notes-context";
 import { QuestsProvider } from "./contexts/quests-context";
+import { ModalProvider } from "./contexts/modal-context";
 
 function App() {
   const { mode } = useColorMode();
@@ -21,39 +22,41 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid
-        sx={{
-          bgcolor: "background.default",
-          display: "flex",
-          width: "100%",
-          minHeight: "100%",
-        }}
-      >
-        <Header />
-        <LeftSidebar />
-        <Feed>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <NotesProvider>
-                  <Home />
-                </NotesProvider>
-              }
-            />
-            <Route
-              path="/quests"
-              element={
-                <QuestsProvider>
-                  <Quests />
-                </QuestsProvider>
-              }
-            />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
-        </Feed>
-        <RightSidebar />
-      </Grid>
+      <ModalProvider>
+        <Grid
+          sx={{
+            bgcolor: "background.default",
+            display: "flex",
+            width: "100%",
+            minHeight: "100%",
+          }}
+        >
+          <Header />
+          <LeftSidebar />
+          <Feed>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <NotesProvider>
+                    <Home />
+                  </NotesProvider>
+                }
+              />
+              <Route
+                path="/quests"
+                element={
+                  <QuestsProvider>
+                    <Quests />
+                  </QuestsProvider>
+                }
+              />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </Feed>
+          <RightSidebar />
+        </Grid>
+      </ModalProvider>
     </ThemeProvider>
   );
 }
