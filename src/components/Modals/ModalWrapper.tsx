@@ -1,11 +1,12 @@
-import { Modal, Box, styled } from "@mui/material"
+import { Modal, Box, styled, Grid, Typography, Button } from "@mui/material"
 import { useModal } from "../../contexts/modal-context"
 
 
 const style = {
-  width: 400,
+  width: 800,
   bgcolor: 'background.paper',
   border: '2px solid #000',
+  borderRadius: 8,
   boxShadow: 24,
   p: 4,
 };
@@ -18,18 +19,35 @@ export const StyledModal = styled(Modal)`
   top: 0;
   left: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
+  padding: 24px 0;
 `
 
-const ModalWrapper: React.FC = ({ children }) => {
+interface IModalWrapper {
+  title?: string;
+}
+
+const ModalWrapper: React.FC<IModalWrapper> = ({ children, title }) => {
   const { state, dispatch } = useModal();
-  return (
-    <StyledModal open={state.isOpen} onClose={() => dispatch({
+
+  const handleClose = () => {
+    dispatch({
       type: "close",
       modalType: state.modalType
-    })}>
+    })
+  }
+
+  return (
+    <StyledModal open={state.isOpen} onClose={handleClose}>
       <Box sx={style}>
+        <Grid display="flex" justifyContent="space-between" alignItems="center">
+          <Typography variant="h5">
+            {title}
+          </Typography>
+          <Button onClick={handleClose}>
+            Close
+          </Button>
+        </Grid>
         {children}
       </Box>
     </StyledModal>

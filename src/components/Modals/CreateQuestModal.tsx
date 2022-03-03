@@ -3,7 +3,7 @@ import ModalWrapper from "./ModalWrapper";
 const CreateQuestModal = () => {
 
   return (
-    <ModalWrapper>
+    <ModalWrapper title="Create Quest">
       Create Quest
     </ModalWrapper>
   )

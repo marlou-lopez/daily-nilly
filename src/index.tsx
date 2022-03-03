@@ -21,9 +21,7 @@ ReactDOM.render(
       <BrowserRouter>
         <CssBaseline />
         <ColorModeProvider>
-          <ModalProvider>
-            <App />
-          </ModalProvider>
+          <App />
         </ColorModeProvider>
       </BrowserRouter>
     </QueryClientProvider>
