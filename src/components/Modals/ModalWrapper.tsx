@@ -5,7 +5,6 @@ import { useModal } from "../../contexts/modal-context"
 const style = {
   width: 800,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
   borderRadius: 8,
   boxShadow: 24,
   p: 4,
