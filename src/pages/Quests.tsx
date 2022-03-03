@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import {
   Box,
+  Button,
   Tab,
   Tabs,
-  Typography,
 } from "@mui/material";
 import FeedBody from "../components/Feed/FeedBody";
 import FeedHeader from "../components/Feed/FeedHeader";
 import QuestCard from "../components/QuestCard";
+import { ModalTypes, useModal } from "../contexts/modal-context";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -37,6 +38,7 @@ function TabPanel(props: TabPanelProps) {
 
 const Quests: React.FC = () => {
   const [value, setValue] = useState(0);
+  const { dispatch } = useModal();
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -44,7 +46,9 @@ const Quests: React.FC = () => {
 
   return (
     <>
-      <FeedHeader headerTitle="Quests">Quest Header</FeedHeader>
+      <FeedHeader headerTitle="Quests">
+        <Button onClick={() => dispatch({ type: "open", modalType: ModalTypes.CREATE_QUEST })}>Open</Button>
+      </FeedHeader>
       <FeedBody>
         <Tabs
           value={value}

@@ -6,6 +6,7 @@ import { CssBaseline } from "@mui/material/";
 import { BrowserRouter } from "react-router-dom";
 import { ColorModeProvider } from "./contexts/color-mode-context";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ModalProvider } from "./contexts/modal-context";
 
 // if (process.env.NODE_ENV === 'development') {
 //   const { worker } = require('./mocks/browser')
@@ -20,7 +21,9 @@ ReactDOM.render(
       <BrowserRouter>
         <CssBaseline />
         <ColorModeProvider>
-          <App />
+          <ModalProvider>
+            <App />
+          </ModalProvider>
         </ColorModeProvider>
       </BrowserRouter>
     </QueryClientProvider>
