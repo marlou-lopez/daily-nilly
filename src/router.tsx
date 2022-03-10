@@ -1,7 +1,7 @@
 import { Navigate, ReactLocation, Router } from "@tanstack/react-location";
 import { useQueryClient } from "react-query";
-import NoteList from "./components/Notes/NoteList";
 import { fetchNotes } from "./hooks/useNotes";
+import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Quests from "./pages/Quests";
 import TestComp from "./TestComp";
@@ -23,7 +23,7 @@ export const RouterProvider: React.FC = ({ children }) => {
       routes={[
         {
           path: PATHS.HOME,
-          element: <NoteList />,
+          element: <Home />,
           loader: () => 
             queryClient.getQueryData("notes") ??
             queryClient.fetchInfiniteQuery("notes", () => fetchNotes()).then(() => ({})),
