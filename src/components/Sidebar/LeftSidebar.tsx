@@ -1,21 +1,21 @@
 import { Box, styled } from "@mui/material";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
-const SidebarLink = styled(NavLink)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  height: "48px",
-  margin: `0 ${theme.spacing(-1.5)}`,
-  padding: `0 ${theme.spacing(1.5)}`,
-  color: theme.palette.primary.main,
-  cursor: "pointer",
-  borderRadius: "16px",
-  textDecoration: "none",
-  "&:hover": {
-    backgroundColor: "rgba(25, 52, 94, 0.2)",
-  },
-}));
+// const SidebarLink = styled(NavLink)(({ theme }) => ({
+//   display: "flex",
+//   alignItems: "center",
+//   height: "48px",
+//   margin: `0 ${theme.spacing(-1.5)}`,
+//   padding: `0 ${theme.spacing(1.5)}`,
+//   color: theme.palette.primary.main,
+//   cursor: "pointer",
+//   borderRadius: "16px",
+//   textDecoration: "none",
+//   "&:hover": {
+//     backgroundColor: "rgba(25, 52, 94, 0.2)",
+//   },
+// }));
 
 const activeLinkStyle: React.CSSProperties = {
   backgroundColor: "#19345E",
@@ -25,7 +25,7 @@ const activeLinkStyle: React.CSSProperties = {
 const LeftSidebar: React.FC = () => {
   return (
     <Sidebar position="left">
-      <Box
+      {/* <Box
         sx={{
           py: 0.5,
         }}
@@ -63,7 +63,7 @@ const LeftSidebar: React.FC = () => {
         >
           Profile
         </SidebarLink>
-      </Box>
+      </Box> */}
     </Sidebar>
   );
 };

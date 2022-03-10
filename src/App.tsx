@@ -1,19 +1,12 @@
-import React, { useMemo } from "react";
-import { createTheme, Grid, ThemeProvider } from "@mui/material";
-import { Route, Routes } from "react-router-dom";
+import { useMemo } from "react";
+import { createTheme, ThemeProvider } from "@mui/material";
 import "./App.css";
-import Feed from "./components/Feed/Feed";
-import Header from "./components/Header";
-import LeftSidebar from "./components/Sidebar/LeftSidebar";
-import RightSidebar from "./components/Sidebar/RightSidebar";
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import Quests from "./pages/Quests";
 import { useColorMode } from "./contexts/color-mode-context";
 import { getDesignTokens } from "./utils/theme-utils";
-import { NotesProvider } from "./contexts/notes-context";
-import { QuestsProvider } from "./contexts/quests-context";
 import { ModalProvider } from "./contexts/modal-context";
+import Layout from "./Layout";
+import { Outlet } from "@tanstack/react-location";
+
 
 function App() {
   const { mode } = useColorMode();
@@ -23,7 +16,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <ModalProvider>
-        <Grid
+        {/* <Grid
           sx={{
             bgcolor: "background.default",
             display: "flex",
@@ -55,7 +48,10 @@ function App() {
             </Routes>
           </Feed>
           <RightSidebar />
-        </Grid>
+        </Grid> */}
+        <Layout>
+          <Outlet />
+        </Layout>
       </ModalProvider>
     </ThemeProvider>
   );

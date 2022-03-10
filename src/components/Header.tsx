@@ -29,11 +29,10 @@ const Header: React.FC = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            width: "1200px",
             color: "common.white",
           }}
         >
-          <Typography variant="h5">Dayless</Typography>
+          <Typography variant="h5">OneLess</Typography>
           {theme.palette.mode === "light" ? (
             <IconButton color="inherit" onClick={toggleColorMode} data-testid="light-mode-btn">
               <LightModeIcon />

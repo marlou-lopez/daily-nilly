@@ -3,10 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { CssBaseline } from "@mui/material/";
-import { BrowserRouter } from "react-router-dom";
 import { ColorModeProvider } from "./contexts/color-mode-context";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ModalProvider } from "./contexts/modal-context";
+import { RouterProvider } from "./router";
 
 // if (process.env.NODE_ENV === 'development') {
 //   const { worker } = require('./mocks/browser')
@@ -18,12 +17,12 @@ const queryClient = new QueryClient();
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <RouterProvider>
         <CssBaseline />
         <ColorModeProvider>
           <App />
         </ColorModeProvider>
-      </BrowserRouter>
+      </RouterProvider>
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")
