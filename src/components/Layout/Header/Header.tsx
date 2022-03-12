@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import SettingsIcon from '@mui/icons-material/Settings';
 import BrandingWatermarkIcon from '@mui/icons-material/BrandingWatermark';
-import Settings from "../Settings";
+import Settings from "./Settings";
 
 
 interface IHideOnScroll {

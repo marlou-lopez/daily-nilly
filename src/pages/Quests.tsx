@@ -5,8 +5,6 @@ import {
   Tab,
   Tabs,
 } from "@mui/material";
-import FeedBody from "../components/Feed/FeedBody";
-import FeedHeader from "../components/Feed/FeedHeader";
 import QuestCard from "../components/QuestCard";
 import { ModalTypes, useModal } from "../contexts/modal-context";
 

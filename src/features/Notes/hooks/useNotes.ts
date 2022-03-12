@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from "react-query";
-import { INotes } from "../contexts/notes-context";
+import { INotes } from "../types";
 
 export const fetchNotes = async (page: number = 1): Promise<INotes[]> => {
   const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}`);

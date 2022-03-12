@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { BottomNavigationAction, Paper, BottomNavigation } from "@mui/material";
 import HomeIcon from '@mui/icons-material/Home';
-import TrophyIcon from '@mui/icons-material/EmojiEvents';
 import QuestIcon from '@mui/icons-material/AssignmentLate';
 import AutoAwesome from '@mui/icons-material/AutoAwesome';
+import NotesIcon from '@mui/icons-material/Notes';
 import { useNavigate, useRouter } from "@tanstack/react-location";
-import { PATHS } from "../../router";
+import { PATHS } from "../../../router";
 
 const StyledNavAction = styled(BottomNavigationAction)(({ theme }) => ({
   '&.Mui-selected': {
@@ -36,10 +36,10 @@ const BottomNav: React.FC = () => {
           bgcolor: "background.default",
         }}
       >
-        <StyledNavAction label="Home" value="home" icon={<HomeIcon />} onClick={() => onLinkClick(PATHS.HOME)} />
-        <StyledNavAction label="Quests" value="quests" icon={<QuestIcon />} onClick={() => onLinkClick(PATHS.QUESTS)} />
-        <StyledNavAction label="Achievements" value="achievements" icon={<TrophyIcon />} onClick={() => onLinkClick(PATHS.ACHIEVEMENTS)} />
-        <StyledNavAction label="Rewards" value="rewards" icon={<AutoAwesome />} onClick={() => onLinkClick(PATHS.REWARDS)} />
+        <StyledNavAction label="Home" value={PATHS.HOME} icon={<HomeIcon />} onClick={() => onLinkClick(PATHS.HOME)} />
+        <StyledNavAction label="Notes" value={PATHS.NOTES} icon={<NotesIcon />} onClick={() => onLinkClick(PATHS.NOTES)} />
+        <StyledNavAction label="Quests" value={PATHS.QUESTS} icon={<QuestIcon />} onClick={() => onLinkClick(PATHS.QUESTS)} />
+        <StyledNavAction label="Rewards" value={PATHS.REWARDS} icon={<AutoAwesome />} onClick={() => onLinkClick(PATHS.REWARDS)} />
       </BottomNavigation>
     </Paper>
   )

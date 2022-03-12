@@ -1,5 +1,5 @@
 import { Menu, Box, ToggleButtonGroup, ToggleButton, Divider, MenuItem, ListItemIcon, useTheme } from "@mui/material";
-import { useColorMode } from "../../contexts/color-mode-context";
+import { useColorMode } from "../../../contexts/color-mode-context";
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountIcon from '@mui/icons-material/AccountCircle';
 

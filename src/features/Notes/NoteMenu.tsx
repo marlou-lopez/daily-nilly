@@ -1,14 +1,14 @@
 import { IconButton, Menu, MenuItem } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import React from "react";
-import { INotes } from "../contexts/notes-context";
+import { INotes } from "./types";
 
 interface ICardMenu extends Pick<INotes, "id"> {
   handleDelete: (id: INotes["id"]) => void;
   handleEdit: (id: INotes["id"]) => void;
 }
 
-const CardMenu: React.FC<ICardMenu> = ({ handleDelete, handleEdit, id }) => {
+const NoteMenu: React.FC<ICardMenu> = ({ handleDelete, handleEdit, id }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -40,4 +40,4 @@ const CardMenu: React.FC<ICardMenu> = ({ handleDelete, handleEdit, id }) => {
   );
 };
 
-export default CardMenu;
+export default NoteMenu;

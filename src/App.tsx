@@ -4,7 +4,7 @@ import "./App.css";
 import { useColorMode } from "./contexts/color-mode-context";
 import { getDesignTokens } from "./utils/theme-utils";
 import { ModalProvider } from "./contexts/modal-context";
-import Layout from "./Layout";
+import Layout from "./components/Layout/Layout";
 import { Outlet } from "@tanstack/react-location";
 
 
