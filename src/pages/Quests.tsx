@@ -46,19 +46,19 @@ const Quests: React.FC = () => {
 
   return (
     <>
-      <FeedHeader headerTitle="Quests">
+      {/* <FeedHeader headerTitle="Quests">
         <Button onClick={() => dispatch({ type: "open", modalType: ModalTypes.CREATE_QUEST })}>Open</Button>
-      </FeedHeader>
-      <FeedBody>
+      </FeedHeader> */}
+      <>
         <Tabs
           value={value}
           onChange={handleChange}
           variant="fullWidth"
           sx={{
-            position: "sticky",
-            top: "175px",
-            bgcolor: "background.paper",
-            zIndex: 100,
+            // position: "sticky",
+            // top: "175px",
+            // bgcolor: "background.paper",
+            // zIndex: 100,
             mb: 1,
           }}
         >
@@ -77,7 +77,8 @@ const Quests: React.FC = () => {
         <TabPanel value={value} index={2}>
           World
         </TabPanel>
-      </FeedBody>
+        
+      </>
     </>
   );
 };

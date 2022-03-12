@@ -16,39 +16,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <ModalProvider>
-        {/* <Grid
-          sx={{
-            bgcolor: "background.default",
-            display: "flex",
-            width: "100%",
-            minHeight: "100%",
-          }}
-        >
-          <Header />
-          <LeftSidebar />
-          <Feed>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <NotesProvider>
-                    <Home />
-                  </NotesProvider>
-                }
-              />
-              <Route
-                path="/quests"
-                element={
-                  <QuestsProvider>
-                    <Quests />
-                  </QuestsProvider>
-                }
-              />
-              <Route path="/profile" element={<Profile />} />
-            </Routes>
-          </Feed>
-          <RightSidebar />
-        </Grid> */}
         <Layout>
           <Outlet />
         </Layout>

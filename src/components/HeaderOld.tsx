@@ -3,7 +3,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/NightsStay";
 import { useColorMode } from "../contexts/color-mode-context";
 
-const Header: React.FC = () => {
+const HeaderOld: React.FC = () => {
   const theme = useTheme();
   const { toggleColorMode } = useColorMode();
   return (
@@ -48,4 +48,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default HeaderOld;
