@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardContent, CardActionArea } from "@mui/material";
+import { Card, CardHeader, CardContent } from "@mui/material";
 import { INotes } from "./types"
 import NoteMenu from "./NoteMenu";
 import Circle from "@mui/icons-material/Circle"
