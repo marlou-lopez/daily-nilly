@@ -1,7 +1,7 @@
-import { Card, CardHeader, CardContent } from "@mui/material";
+import { Card, CardHeader, CardContent, CardActionArea } from "@mui/material";
 import { INotes } from "./types"
-import { relativeTimeFromDates } from "../../utils/date-utils";
 import NoteMenu from "./NoteMenu";
+import Circle from "@mui/icons-material/Circle"
 
 const Note: React.FC<INotes> = ({ id, date, body }) => {
   return (
@@ -15,7 +15,13 @@ const Note: React.FC<INotes> = ({ id, date, body }) => {
       data-testid={`note-${id}`}
     >
       <CardHeader
-        subheader={relativeTimeFromDates(date)}
+        avatar={
+          <Circle sx={{
+            color: "green"
+          }}/>
+        }
+        subheader="April 1, 2021"
+        title="Title"
         action={
           <NoteMenu
             // handleEdit={handleEdit}
