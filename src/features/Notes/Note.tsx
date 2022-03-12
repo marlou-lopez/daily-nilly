@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardContent } from "@mui/material";
-import { INotes } from "../../contexts/notes-context";
+import { INotes } from "./types"
 import { relativeTimeFromDates } from "../../utils/date-utils";
-import CardMenu from "../CardMenu";
+import NoteMenu from "./NoteMenu";
 
 const Note: React.FC<INotes> = ({ id, date, body }) => {
   return (
@@ -17,7 +17,7 @@ const Note: React.FC<INotes> = ({ id, date, body }) => {
       <CardHeader
         subheader={relativeTimeFromDates(date)}
         action={
-          <CardMenu
+          <NoteMenu
             // handleEdit={handleEdit}
             // handleDelete={handleDelete}
             handleEdit={() => console.log('edit')}

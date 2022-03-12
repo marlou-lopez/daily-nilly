@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
-import CardMenu from "../../../components/CardMenu";
+import CardMenu from "../../../features/Notes/NoteMenu";
 
 describe("CardMenu unit test", () => {
   const handleDeleteMock = jest.fn();

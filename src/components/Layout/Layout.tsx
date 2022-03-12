@@ -1,6 +1,6 @@
 import { Container, Grid } from "@mui/material";
-import BottomNav from "./components/BottomNav";
-import Header from "./components/Header";
+import BottomNav from "./BottomNav";
+import Header from "./Header";
 
 const Layout: React.FC = ({ children }) => {
   return (

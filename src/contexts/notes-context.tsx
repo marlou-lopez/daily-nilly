@@ -1,12 +1,5 @@
 import React from "react";
-
-export interface INotes {
-  id: string;
-  content: string;
-  date: Date;
-  body: string;
-  title: string;
-}
+import { INotes } from "../features/Notes/types";
 
 type Action =
   | { type: "add"; payload: INotes }

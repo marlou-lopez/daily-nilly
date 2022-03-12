@@ -1,7 +1,7 @@
 import { Typography, Box } from "@mui/material";
 import React from "react";
-import useNotes from "../../hooks/useNotes";
-import useScrollToBottomFetch from "../../hooks/useScrollToBottomFetch";
+import useNotes from "./hooks/useNotes";
+import useScrollToBottomFetch from "../../utils/hooks/useScrollToBottomFetch";
 import Note from "./Note";
 
 const NoteList: React.FC = () => {
