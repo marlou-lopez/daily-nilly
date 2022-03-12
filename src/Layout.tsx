@@ -1,11 +1,12 @@
-import { AppBar, Container, Grid, Slide, Toolbar, useScrollTrigger } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import BottomNav from "./components/BottomNav";
 import Header from "./components/Header";
 
 const Layout: React.FC = ({ children }) => {
   return (
     <Grid sx={{
-      bgcolor: "background.default"
+      bgcolor: "background.default",
+      minHeight: "inherit"
     }}>
       <Header />
       <Container maxWidth="md" sx={{

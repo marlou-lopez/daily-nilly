@@ -12,7 +12,7 @@ interface ISettings {
 const Settings: React.FC<ISettings> = ({ anchorEl, open, handleClose }) => {
   const { toggleColorMode } = useColorMode();
   const theme = useTheme();
-  console.log('noce')
+
   return (
     <Menu
       anchorEl={anchorEl}

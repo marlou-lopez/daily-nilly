@@ -1,16 +1,20 @@
 import { Navigate, ReactLocation, Router } from "@tanstack/react-location";
 import { useQueryClient } from "react-query";
 import { fetchNotes } from "./hooks/useNotes";
+import Achievements from "./pages/Achievements";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Quests from "./pages/Quests";
+import Rewards from "./pages/Rewards";
 import TestComp from "./TestComp";
 
 
 export const PATHS = {
   HOME: 'home',
   QUESTS: 'quests',
-  ACHIEVEMENTS: 'achievements'
+  ACHIEVEMENTS: 'achievements',
+  PROFILE: 'profile',
+  REWARDS: 'rewards'
 }
 
 const location = new ReactLocation();
@@ -42,8 +46,16 @@ export const RouterProvider: React.FC = ({ children }) => {
           ]
         },
         {
-          path: PATHS.ACHIEVEMENTS,
+          path: PATHS.PROFILE,
           element: <Profile />
+        },
+        {
+          path: PATHS.ACHIEVEMENTS,
+          element: <Achievements />
+        },
+        {
+          path: PATHS.REWARDS,
+          element: <Rewards />
         },
         {
           element: <Navigate to="home"/>
