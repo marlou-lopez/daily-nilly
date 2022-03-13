@@ -41,7 +41,10 @@ const Header: React.FC = () => {
       <HideOnScroll>
         <AppBar sx={{
           bgcolor: "background.default",
-          backgroundImage: "none"
+          backgroundImage: "none",
+          borderBottom: "1px solid",
+          borderBottomColor: "divider",
+          boxShadow: "none"
         }}>
           <Toolbar sx={{
             justifyContent: "space-between"
@@ -53,10 +56,10 @@ const Header: React.FC = () => {
                   : <DaylessTitleDark />
               }
             </IconButton> */}
-            <IconButton>
+            <IconButton aria-label="Account">
               <AccountIcon />
             </IconButton>
-            <IconButton>
+            <IconButton aria-label="Dayless">
               {
                 theme.palette.mode === "light"
                   ? <DaylessIcon height="35px" width="15px" />
@@ -65,7 +68,7 @@ const Header: React.FC = () => {
             </IconButton>
 
             <Tooltip title="App Settings">
-              <IconButton onClick={handleClickSetting}>
+              <IconButton aria-label="settings" onClick={handleClickSetting}>
                 <SettingsIcon />
               </IconButton>
             </Tooltip>

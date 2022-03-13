@@ -18,12 +18,15 @@ export const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
           },
           background: {
             default: "#f0f2f5",
-            paper: "#fff"
+            paper: "#ffffff"
           }
         }
       : {
         primary: {
           main: "#19345E"
+        },
+        secondary: {
+          main: "#E69E0E",
         },
         background: {
           paper: "#4B6184",
