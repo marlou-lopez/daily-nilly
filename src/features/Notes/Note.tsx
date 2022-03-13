@@ -6,11 +6,11 @@ import Circle from "@mui/icons-material/Circle"
 const Note: React.FC<INotes> = ({ id, date, body }) => {
   return (
     <Card
-      variant="outlined"
       sx={{
         mb: 1,
-        bgcolor: "background.paper",
+        bgcolor: "background.default",
       }}
+      variant="outlined"
       key={id}
       data-testid={`note-${id}`}
     >

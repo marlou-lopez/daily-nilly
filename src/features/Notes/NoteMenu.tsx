@@ -32,7 +32,19 @@ const NoteMenu: React.FC<ICardMenu> = ({ handleDelete, handleEdit, id }) => {
       <IconButton aria-label="settings" onClick={handleClick} data-testid={`menu-icon-${id}`}>
         <MoreVertIcon />
       </IconButton>
-      <Menu anchorEl={anchorEl} open={open} onClose={handleClose} data-testid={`menu-${id}`}>
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        data-testid={`menu-${id}`}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        PaperProps={{
+          sx: {
+            bgcolor: "background.default",
+          }
+        }}
+      >
         <MenuItem onClick={handleEditMenu} data-testid={`edit-menu-${id}`} >Edit</MenuItem>
         <MenuItem onClick={handleDeleteMenu} data-testid={`delete-menu-${id}`}>Delete</MenuItem>
       </Menu>

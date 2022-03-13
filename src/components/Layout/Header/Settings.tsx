@@ -1,4 +1,4 @@
-import { Menu, Box, ToggleButtonGroup, ToggleButton, Divider, MenuItem, ListItemIcon, useTheme } from "@mui/material";
+import { Menu, Box, Divider, MenuItem, ListItemIcon, useTheme, Button } from "@mui/material";
 import { useColorMode } from "../../../contexts/color-mode-context";
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountIcon from '@mui/icons-material/AccountCircle';
@@ -42,15 +42,14 @@ const Settings: React.FC<ISettings> = ({ anchorEl, open, handleClose }) => {
       }}
     >
       <Box m={1} mt={0}>
-        <ToggleButtonGroup
-          value={theme.palette.mode}
-          onChange={toggleColorMode}
-          exclusive
-          size="small"
+        <Button
+          onClick={toggleColorMode}
+          sx={{ textTransform: "uppercase" }}
+          fullWidth
+          variant="contained"
         >
-          <ToggleButton value="light">Light</ToggleButton>
-          <ToggleButton value="dark">Dark</ToggleButton>
-        </ToggleButtonGroup>
+          {theme.palette.mode}
+        </Button>
       </Box>
       <Divider />
       <MenuItem onClick={handleClose}>
