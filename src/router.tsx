@@ -2,11 +2,11 @@ import { Navigate, ReactLocation, Router } from "@tanstack/react-location";
 import { useQueryClient } from "react-query";
 import { fetchNotes } from "./features/Notes/hooks/useNotes";
 import Achievements from "./pages/Achievements";
-import Home from "./pages/Home";
 import Notes from "./pages/Notes";
 import Profile from "./pages/Profile";
 import Quests from "./pages/Quests";
 import Rewards from "./pages/Rewards";
+import TestPage from "./pages/TestPage";
 import TestComp from "./TestComp";
 
 
@@ -16,7 +16,8 @@ export const PATHS = {
   QUESTS: 'quests',
   ACHIEVEMENTS: 'achievements',
   PROFILE: 'profile',
-  REWARDS: 'rewards'
+  REWARDS: 'rewards',
+  TESTPAGE: 'testpage'
 }
 
 const location = new ReactLocation();
@@ -27,17 +28,6 @@ export const RouterProvider: React.FC = ({ children }) => {
     <Router
       location={location}
       routes={[
-        {
-          path: PATHS.HOME,
-          element: <Home />,
-        },
-        {
-          path: PATHS.NOTES,
-          element: <Notes />,
-          loader: () =>
-          queryClient.getQueryData("notes") ??
-          queryClient.fetchInfiniteQuery("notes", () => fetchNotes()).then(() => ({})),
-        },
         {
           path: PATHS.QUESTS,
           children: [
@@ -52,6 +42,13 @@ export const RouterProvider: React.FC = ({ children }) => {
           ]
         },
         {
+          path: PATHS.NOTES,
+          element: <Notes />,
+          loader: () =>
+          queryClient.getQueryData("notes") ??
+          queryClient.fetchInfiniteQuery("notes", () => fetchNotes()).then(() => ({})),
+        },
+        {
           path: PATHS.PROFILE,
           element: <Profile />
         },
@@ -64,7 +61,11 @@ export const RouterProvider: React.FC = ({ children }) => {
           element: <Rewards />
         },
         {
-          element: <Navigate to="home" />
+          path: PATHS.TESTPAGE,
+          element: <TestPage />
+        },
+        {
+          element: <Navigate to="quests" />
         }
       ]}
     >

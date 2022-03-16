@@ -5,12 +5,13 @@ import Header from "./Header";
 const Layout: React.FC = ({ children }) => {
   return (
     <Grid sx={{
-      bgcolor: "background.default",
       minHeight: "inherit"
     }}>
-      <Header />
       <Container maxWidth="md" sx={{
-        bgcolor: "background.default",
+        paddingTop: "16px",
+        minHeight: "inherit",
+        display: "flex",
+        flexDirection: "column",
       }}>
         {children}
       </Container>

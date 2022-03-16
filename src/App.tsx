@@ -19,6 +19,7 @@ function App() {
         <Layout>
           <Outlet />
         </Layout>
+        {/* <Outlet /> */}
       </ModalProvider>
     </ThemeProvider>
   );

@@ -1,8 +1,8 @@
 import { BottomNavigationAction, Paper, BottomNavigation, styled } from "@mui/material";
-import HomeIcon from '@mui/icons-material/Home';
 import QuestIcon from '@mui/icons-material/AssignmentLate';
-import AutoAwesome from '@mui/icons-material/AutoAwesome';
-import NotesIcon from '@mui/icons-material/Notes';
+import StickyNote2Icon from '@mui/icons-material/StickyNote2';
+import PersonIcon from '@mui/icons-material/Person';
+import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate, useRouter } from "@tanstack/react-location";
 import { PATHS } from "../../../router";
 
@@ -12,16 +12,11 @@ const currentSelectedTab = (path: string) => {
 }
 
 const StyledBottomNavAction = styled(BottomNavigationAction)(({ theme }) => ({
-  '& .MuiBottomNavigationAction-label': {
-    transition: 'none',
-    fontSize: 14,
-    '&.Mui-selected': {
-      fontSize: 14
-    }
-  },
   '&.Mui-selected': {
-    color: theme.palette.secondary.main
-  }
+    color: '#324E7B',
+    paddingTop: '12px'
+  },
+  padding: '12px'
 }));
 
 const BottomNav: React.FC = () => {
@@ -37,18 +32,15 @@ const BottomNav: React.FC = () => {
   return (
     <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}>
       <BottomNavigation
-        showLabels
         value={currentSelectedTab(route.state.location.pathname)}
         sx={{
-          bgcolor: "background.default",
-          borderTop: "1px solid",
-          borderTopColor: "divider"
+          boxShadow: '0px 2px 9px rgba(0, 0, 0, 0.25)'
         }}
       >
-        <StyledBottomNavAction label="Home" value={PATHS.HOME} icon={<HomeIcon />} onClick={() => onLinkClick(PATHS.HOME)} />
-        <StyledBottomNavAction label="Notes" value={PATHS.NOTES} icon={<NotesIcon />} onClick={() => onLinkClick(PATHS.NOTES)} />
-        <StyledBottomNavAction label="Quests" value={PATHS.QUESTS} icon={<QuestIcon />} onClick={() => onLinkClick(PATHS.QUESTS)} />
-        <StyledBottomNavAction label="Rewards" value={PATHS.REWARDS} icon={<AutoAwesome />} onClick={() => onLinkClick(PATHS.REWARDS)} />
+        <StyledBottomNavAction value={PATHS.QUESTS} icon={<QuestIcon />} onClick={() => onLinkClick(PATHS.HOME)} />
+        <StyledBottomNavAction value={PATHS.NOTES} icon={<StickyNote2Icon />} onClick={() => onLinkClick(PATHS.NOTES)} />
+        <StyledBottomNavAction value={PATHS.QUESTS} icon={<PersonIcon />} onClick={() => onLinkClick(PATHS.QUESTS)} />
+        <StyledBottomNavAction value={PATHS.REWARDS} icon={<MenuIcon />} onClick={() => onLinkClick(PATHS.REWARDS)} />
       </BottomNavigation>
     </Paper>
   )
