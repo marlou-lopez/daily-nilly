@@ -24,11 +24,13 @@ const QUESTS = [
 
 const QuestList: React.FC = () => {
   return (
-    <Grid>
+    <Grid sx={{
+      flexGrow: 1
+    }}>
       <Grid sx={{
         display: "flex",
         justifyContent: "flex-end",
-        alignItems: "center"
+        alignItems: "center",
       }}>
         <Typography>
           Improve English

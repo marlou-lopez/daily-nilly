@@ -8,7 +8,7 @@ const Quests: React.FC = () => {
 
   return (
     <Grid sx={{
-      display: "flex"
+      display: "flex",
     }}>
       <QuestList />
     </Grid>
