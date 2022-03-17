@@ -8,12 +8,18 @@ import { ColorModeProvider } from "./contexts/color-mode-context";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RouterProvider } from "./router";
 
-// if (process.env.NODE_ENV === 'development') {
-//   const { worker } = require('./mocks/browser')
-//   worker.start()
-// }
+if (process.env.NODE_ENV === 'development') {
+  const { worker } = require('./mocks/browser')
+  worker.start()
+}
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false
+    }
+  }
+});
 
 ReactDOM.render(
   <React.StrictMode>

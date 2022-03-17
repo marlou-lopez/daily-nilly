@@ -1,6 +1,5 @@
-import { Card, CardHeader, CardContent, Box, styled, Grid, IconButton, Typography } from "@mui/material";
-import { INotes } from "./types"
-import NoteMenu from "./NoteMenu";
+import { Box, styled, Grid, IconButton, Typography } from "@mui/material";
+import { INotes, Mood } from "./types"
 import Circle from "@mui/icons-material/Circle"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
@@ -13,9 +12,25 @@ const StyledBox = styled(Box)({
   padding: '16px'
 });
 
-const Note: React.FC<INotes> = ({ id, date, body }) => {
+// Temporary
+const moodIndicator = (mood: Mood) => {
+  if (mood === Mood.SAD) {
+    return "#0a58a5"
+  }
+  if (mood === Mood.HAPPY) {
+    return "green"
+  }
+  if (mood === Mood.NEUTRAL) {
+    return "gray"
+  }
+  if (mood === Mood.ANGRY) {
+    return "red"
+  }
+}
+
+const Note: React.FC<INotes> = ({ id, mood, content }) => {
   return (
-    <StyledBox>
+    <StyledBox key={id}>
       <Grid sx={{
         display: "flex",
         flexGrow: 1,
@@ -27,7 +42,7 @@ const Note: React.FC<INotes> = ({ id, date, body }) => {
           display: "flex",
           alignItems: "center"
         }}>
-          <Circle sx={{ color: "green", marginRight: '16px' }} />
+          <Circle sx={{ color: moodIndicator(mood), marginRight: '16px' }} />
           <Typography variant="button">
             April 1, 2021
           </Typography>
@@ -37,38 +52,9 @@ const Note: React.FC<INotes> = ({ id, date, body }) => {
         </IconButton>
       </Grid>
       <Grid>
-        {body}
+        {content}
       </Grid>
     </StyledBox>
-    // <Card
-    //   sx={{
-    //     mb: 1,
-    //     bgcolor: "background.default",
-    //   }}
-    //   variant="outlined"
-    //   key={id}
-    //   data-testid={`note-${id}`}
-    // >
-    //   <CardHeader
-    //     avatar={
-    //       <Circle sx={{
-    //         color: "green"
-    //       }}/>
-    //     }
-    //     subheader="April 1, 2021"
-    //     title="Title"
-    //     action={
-    //       <NoteMenu
-    //         // handleEdit={handleEdit}
-    //         // handleDelete={handleDelete}
-    //         handleEdit={() => console.log('edit')}
-    //         handleDelete={() => console.log('delete')}
-    //         id={id}
-    //       />
-    //     }
-    //   />
-    //   <CardContent data-testid={`note-${id}-content`}>{body}</CardContent>
-    // </Card>
   )
 };
 

@@ -1,4 +1,4 @@
-import { BottomNavigation, BottomNavigationAction, Box, Card, Container, Grid, IconButton, LinearProgress, linearProgressClasses, Paper, styled, Typography } from "@mui/material";
+import { BottomNavigation, BottomNavigationAction, Box, Container, Grid, IconButton, LinearProgress, linearProgressClasses, Paper, styled, Typography } from "@mui/material";
 import QuestIcon from '@mui/icons-material/AssignmentLate';
 import PendingAction from '@mui/icons-material/PendingActions';
 import MenuIcon from '@mui/icons-material/Menu';

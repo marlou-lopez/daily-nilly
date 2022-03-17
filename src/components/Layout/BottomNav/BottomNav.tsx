@@ -39,7 +39,7 @@ const BottomNav: React.FC = () => {
       >
         <StyledBottomNavAction value={PATHS.QUESTS} icon={<QuestIcon />} onClick={() => onLinkClick(PATHS.HOME)} />
         <StyledBottomNavAction value={PATHS.NOTES} icon={<StickyNote2Icon />} onClick={() => onLinkClick(PATHS.NOTES)} />
-        <StyledBottomNavAction value={PATHS.QUESTS} icon={<PersonIcon />} onClick={() => onLinkClick(PATHS.QUESTS)} />
+        <StyledBottomNavAction value={PATHS.PROFILE} icon={<PersonIcon />} onClick={() => onLinkClick(PATHS.PROFILE)} />
         <StyledBottomNavAction value={PATHS.REWARDS} icon={<MenuIcon />} onClick={() => onLinkClick(PATHS.REWARDS)} />
       </BottomNavigation>
     </Paper>
