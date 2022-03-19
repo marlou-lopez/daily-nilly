@@ -6,6 +6,9 @@ import { PaletteMode, ThemeOptions } from "@mui/material";
  * @returns ThemeOptions object based on the mode
  */
 export const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
+  typography: {
+    fontFamily: ['Helvetica', 'Arial', 'sans-serif'].join(',')
+  },
   palette: {
     mode,
     ...(mode === "light"

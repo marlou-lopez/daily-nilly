@@ -19,7 +19,11 @@ const NoteList: React.FC = () => {
       ) : status === "error" ? (
         <Typography variant="overline" color="red" data-testid="feed-error">Error</Typography>
       ) : (
-        <Box>
+        <Box sx={{
+          '> div:not(:last-child)': {
+            marginBottom: "12px"
+          }
+        }}>
           {data?.pages.map((page, index) => (
             // Figure out why there's still a warning about unique key
             // tried uuid - still have warning
